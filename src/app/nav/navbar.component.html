@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Caluwé Quiz</span>
+    <button mat-button [routerLink]="['/topics']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="authService.isAuthenticated()">Topics</button>
+    <button mat-button [routerLink]="['/topics/new']" routerLinkActive="active" *ngIf="authService.isAuthenticated()">Create topic</button>
+
+    <span>
+      <span class="mat-body" *ngIf="authService.isAuthenticated()" [routerLink]="['/user/profile']">Hi {{authService.currentUser.displayName}}</span>
+    </span>
+
+    <button mat-button *ngIf="!authService.isAuthenticated()" [routerLink]="['/user/login']">Login</button>
+    <button mat-button *ngIf="!authService.isAuthenticated()" [routerLink]="['/user/signup']">Signup</button>
+
+  </mat-toolbar-row>
+</mat-toolbar>

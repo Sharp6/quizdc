@@ -1,0 +1,9 @@
+<h1>Login</h1>
+<form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off" novalidate>
+  User Name: <input (ngModel)="userName" name="userName" id="userName" type="text" required /><em *ngIf="loginForm.controls.userName?.invalid && loginForm.controls.userName?.touched">Required</em><br />
+  Password: <input (ngModel)="password" name="password" id="password" type="password" required /><em *ngIf="loginForm.controls.password?.invalid && loginForm.controls.password?.touched">Required</em><br />
+
+  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  <button type="button" (click)="cancel()">Cancel</button>
+
+</form>

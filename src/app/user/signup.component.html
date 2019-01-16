@@ -1,0 +1,10 @@
+<h1>Signup</h1>
+<form #loginForm="ngForm" (ngSubmit)="signup(loginForm.value)" autocomplete="off" novalidate>
+  Email: <input (ngModel)="email" name="email" id="email" type="text" required /><em *ngIf="loginForm.controls.email?.invalid && loginForm.controls.email?.touched">Required</em><br />
+  Password: <input (ngModel)="password" name="password" id="password" type="password" required /><em *ngIf="loginForm.controls.password?.invalid && loginForm.controls.password?.touched">Required</em><br />
+  Display name: <input (ngModel)="displayName" name="displayName" id="displayName" type="text" required /><em *ngIf="loginForm.controls.displayName?.invalid && loginForm.controls.displayName?.touched">Required</em><br />
+
+  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  <button type="button" (click)="cancel()">Cancel</button>
+
+</form>

@@ -1,0 +1,10 @@
+<h1>Edit your profile</h1>
+
+<form [formGroup]="profileForm" (ngSubmit)="saveProfile(profileForm.value)" autocomplete="off" novalidate>
+  Displayname: <input formControlName="displayName" name="displayName" id="displayName" type="text" required /><br />
+
+  <button (click)="logout()">Log out</button>
+  <button type="submit">Submit</button>
+  <button type="button" (click)="cancel()">Cancel</button>
+
+</form>

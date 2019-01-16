@@ -1,0 +1,15 @@
+<h1>Create question</h1>
+
+<form [formGroup]="newQuestionForm" (ngSubmit)="saveQuestion(newQuestionForm.value)" autocomplete="off">
+
+  <mat-form-field>
+    <input matInput id="question" formControlName="question" placeholder="question" type="text">
+    <mat-error *ngIf="value.invalid && value.dirty">Required</mat-error>
+  </mat-form-field>
+
+  <p>
+    <button mat-button type="submit">Save</button>
+    <button mat-button type="button" (click)="cancel()">Cancel</button>
+  </p>
+
+</form>
