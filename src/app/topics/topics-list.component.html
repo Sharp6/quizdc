@@ -2,6 +2,8 @@
   <h1>List of topics</h1>
   <hr>
   <div>
-    <topic-thumb *ngFor="let topic of topics" [topic]="topic"></topic-thumb>
+
+    <topic-thumb *ngFor="let topic of topics | async" [topic]="topic"></topic-thumb>
   </div>
+
 </div>

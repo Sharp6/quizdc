@@ -4,10 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { ITopic } from "../shared/topic.model";
 
 @Component({
-  template: `
-    <h1>Details van een topic</h1>
-    <div>Ik ben de details van een topic: {{topic?.name}}</div>
-  `
+  templateUrl: 'topic-details.component.html'
 })
 export class TopicDetailsComponent implements OnInit {
 

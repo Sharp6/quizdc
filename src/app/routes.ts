@@ -4,26 +4,40 @@ import { TopicDetailsComponent } from "./topics/topic-details/topic-details.comp
 import { TopicCreateComponent } from './topics/topic-create.component';
 import { Error404Component } from './errors/404.components';
 import { TopicRouteActivator } from './topics/topic-details/topic-route-activator.service';
+import { QuestionCreateComponent } from './questions/index';
+import { AuthActivator } from './auth-activator.service';
 
 export const appRoutes:Routes = [
   {
-    path: 'topics', component: TopicsListComponent
+    path: 'topics', component: TopicsListComponent,
+    canActivate: [AuthActivator]
   },
   {
-    path: 'topics/new', component: TopicCreateComponent
+    path: 'topics/new', component: TopicCreateComponent,
+    canActivate: [AuthActivator]
   },
   {
     path: 'topics/:topicname',
     component: TopicDetailsComponent,
-    canActivate: [TopicRouteActivator]
+    canActivate: [TopicRouteActivator,AuthActivator]
   },
   {
-    path: '404', component: Error404Component
+    path: 'topics/questions/new',
+    component: QuestionCreateComponent,
+    canActivate: [AuthActivator]
   },
   {
-    path: '', redirectTo: '/topics', pathMatch: 'full'
+    path: '404',
+    component: Error404Component,
+    canActivate: [AuthActivator]
   },
   {
-    path: 'user', loadChildren: './user/user.module#UserModule'
+    path: '',
+    redirectTo: '/topics',
+    pathMatch: 'full'
+  },
+  {
+    path: 'user',
+    loadChildren: './user/user.module#UserModule'
   }
 ]

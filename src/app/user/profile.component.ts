@@ -1,16 +1,40 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { AuthService } from "./auth.service";
 
 @Component({
   selector: 'userProfile',
-  template: `
-    <h1>Edit your profile</h1>
-    <button type="submit">Submit</button>
-    <button type="button">Cancel</button>
-  `
+  templateUrl: './profile.component.html'
 })
-export class UserProfileComponent {
+export class UserProfileComponent implements OnInit {
 
-  constructor() {
+  profileForm:FormGroup
+
+  constructor(private router:Router, private authService:AuthService) {
+  }
+
+  ngOnInit() {
+    let displayName = new FormControl(this.authService.currentUser.displayName, Validators.required);
+    this.profileForm = new FormGroup({
+      displayName: displayName
+    });
+  }
+
+  saveProfile(formValues) {
+    if(this.profileForm.valid) {
+      this.authService.updateCurrentUser(formValues.displayName);
+      this.router.navigate(['/topics']);
+    }
+  }
+
+  cancel() {
+    this.router.navigate(['/topics']);
+  }
+
+  logout() {
+    this.authService.logoutUser();
+    this.router.navigate(["/user/login"]);
   }
 
 }

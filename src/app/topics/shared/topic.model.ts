@@ -1,4 +1,9 @@
+import { IQuestion } from './../../questions/index'
+
 export interface ITopic {
-  name: string
-  imageUrl?: string
+  $key?: string;
+  name: string;
+  imageUrl?: string;
+  questions?: IQuestion[];
+  claimedBy?: string
 }
